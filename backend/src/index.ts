@@ -14,7 +14,8 @@ app.use(
         "http://localhost:3000",
         "http://localhost:5173",
         "https://youtube-video-summarizer-rose-six.vercel.app/",
-        "https://yt-video-summarizer.somnathcodes.site/"
+        "https://yt-video-summarizer.somnathcodes.site/",
+        "https://youtubesummary.somnathcodes.site",
       ],
       credentials: true,
     })
