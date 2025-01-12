@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/ui/icons"
 import { BACKEND_URL } from '@/config'
+import { useNavigate } from 'react-router-dom'
 
 export function SignupForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const navigate = useNavigate();
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
@@ -39,7 +41,8 @@ export function SignupForm() {
 
       /// Save user data to localStorage
       localStorage.setItem('userId', data.userId)
-      alert('Login successful! User ID saved in localStorage.')
+      alert('signup successful!');
+      navigate('/summarizer');
       form.reset()
     } catch (error: any) {
       setErrorMessage(error.message || 'Something went wrong')

@@ -6,22 +6,24 @@ import Navbar from './components/Navbar';
 import { Toaster } from './components/ui/toaster';
 
 function App() {
-  // This is a simple auth check. In a real app, you'd use a more robust method.
-  const isAuthenticated = !!localStorage.getItem('userId');
-
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <Router>
-        <div className="min-h-screen bg-background">
-          {isAuthenticated && <Navbar />}
-          <Routes>
-            <Route path="/auth" element={!isAuthenticated ? <AuthPage /> : <Navigate to="/summarizer" />} />
-            <Route 
-              path="/summarizer" 
-              element={isAuthenticated ? <YouTubeSummarizer /> : <Navigate to="/auth" />} 
-            />
-            <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/auth"} />} />
-          </Routes>
+        {/* Use `h-screen w-screen` to ensure the app covers the full viewport */}
+        <div className="h-full w-screen flex flex-col bg-background">
+          {!!localStorage.getItem('userId') && <Navbar />}
+          {/* Use `flex-1` to make the Routes container take the remaining space */}
+          <div className="flex-1">
+            <Routes>
+              <Route path="/auth" element={<AuthPage />} />
+              <Route
+                path="/summarizer"
+                element={!!localStorage.getItem('userId') ? <YouTubeSummarizer /> : <Navigate to="/auth" />}
+              />
+              <Route path="*" element={<Navigate to={!!localStorage.getItem('userId') ? "/summarizer" : "/auth"} />} />
+              <Route path="/dashboard" element={<Navigate to={"/summarizer"} />} />
+            </Routes>
+          </div>
         </div>
         <Toaster />
       </Router>
@@ -30,4 +32,3 @@ function App() {
 }
 
 export default App;
-

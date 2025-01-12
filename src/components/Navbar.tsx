@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
     navigate('/auth');
   };
 
@@ -23,12 +23,6 @@ const Navbar: React.FC = () => {
             </Link>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link
-                  to="/dashboard"
-                  className="text-foreground hover:bg-accent hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Dashboard
-                </Link>
                 <Link
                   to="/summarizer"
                   className="text-foreground hover:bg-accent hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium"

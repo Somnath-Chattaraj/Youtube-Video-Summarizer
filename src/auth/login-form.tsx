@@ -41,7 +41,7 @@ export function LoginForm() {
 
       // Reset the form (optional)
       form.reset()
-      navigate('/summarizer')
+      navigate('/dashboard')
     } catch (error: any) {
       setErrorMessage(error.message || 'Something went wrong')
     } finally {

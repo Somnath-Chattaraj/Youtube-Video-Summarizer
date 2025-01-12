@@ -5,10 +5,10 @@ import ReactMarkdown from 'react-markdown';
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { YoutubeIcon, Loader2, Sun, Moon, Send } from 'lucide-react';
+import { YoutubeIcon, Loader2, Send } from 'lucide-react';
 import { useToast } from "../hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
+
 import axios from "axios";
 
 interface Message {
@@ -21,8 +21,8 @@ export default function YouTubeSummarizer() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
-  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,16 +91,7 @@ export default function YouTubeSummarizer() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="relative"
-            >
-              <Sun className="h-[1.2rem] w-[1.2rem] text-orange-500 dark:text-orange-300 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] text-slate-700 dark:text-slate-200 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            
           </motion.div>
 
           {/* Chat Interface */}
