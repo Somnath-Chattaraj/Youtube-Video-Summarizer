@@ -18,7 +18,7 @@ function App() {
               <Route path="/auth" element={<AuthPage />} />
               <Route
                 path="/summarizer"
-                element={!!localStorage.getItem('userId') ? <YouTubeSummarizer /> : <Navigate to="/auth" />}
+                element={ <YouTubeSummarizer />}
               />
               <Route path="*" element={<Navigate to={!!localStorage.getItem('userId') ? "/summarizer" : "/auth"} />} />
               <Route path="/dashboard" element={<Navigate to={"/summarizer"} />} />
