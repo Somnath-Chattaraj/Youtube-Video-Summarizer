@@ -15,8 +15,6 @@ app.use(
         "http://localhost:5173",
         "https://youtube-video-summarizer-rose-six.vercel.app/",
         "https://yt-video-summarizer.somnathcodes.site/"
-        // "https://ecox.somnathcodes.site",
-        // "https://ecox.wedevelopers.online",
       ],
       credentials: true,
     })
