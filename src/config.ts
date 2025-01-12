@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:3001";
+export const BACKEND_URL = "https://youtube-video-summarizer-8ixd.onrender.com";
